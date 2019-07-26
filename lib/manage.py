@@ -2,7 +2,6 @@
 import json
 import conf
 
-
 class Manage():
     def __init__(self,id, name, email, userId):
         self.id = id
@@ -36,5 +35,5 @@ class Manage():
         ID = res['result']['user_list'][0]['user_id']
 
         if score > 90:
-            # print score
+            #打印userID
             print ID + 'log in'
