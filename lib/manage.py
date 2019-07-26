@@ -25,7 +25,7 @@ class Manage():
         conf.client.addUser(conf.image, conf.imageType, 'group1', self.userId, conf.options)
         add = conf.client.addUser(conf.image, conf.imageType, 'group1', self.userId, conf.options)
         if add['error_msg'] == 'SUCCESS':
-            output = { "code": 0, "data" : "success"}
+            output = { "code": 0, "data": "success"}
             print json.dumps(output)
 
 

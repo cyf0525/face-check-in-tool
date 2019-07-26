@@ -2,32 +2,29 @@
 # -*- coding: UTF-8 -*-
 
 from flask import Flask,request,render_template, redirect,url_for
-import pymysql
 from lib.manage import Manage
 
 app = Flask(__name__)
 
-
 @app.route("/upload",methods=['POST'])
 def upload():
-    if request.method=='POST':
-        na = request.form["Name"]
+    if request.method == 'POST':
+        name = request.form["Name"]
         user_id = request.form['ID']
-        em = request.form['Email']
+        email = request.form['Email']
 
         #添加照片到人脸库
-        regi = Manage(user_id,na,em,user_id)
-        regi.Create()
-
+        register = Manage(user_id, name, email, user_id)
+        register.Create()
 
         return redirect(url_for('info'))
 
 @app.route("/query",methods=['POST'])
 def query():
-    if request.method=='POST':
+    if request.method == 'POST':
 
-        regi = Manage('test', 'test', 'test', 'test')
-        regi.Query()
+        register = Manage('test', 'test', 'test', 'test')
+        register.Query()
 
         return redirect(url_for('query'))
     return render_template('query.html')
