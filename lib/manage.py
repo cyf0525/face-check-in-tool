@@ -2,6 +2,7 @@
 from aip import AipFace
 import base64
 import pymysql
+import json
 
 connection = pymysql.connect("localhost", "root", "csss331331", "ecommerce", charset='utf8' )
 cursor = connection.cursor(pymysql.cursors.DictCursor)
@@ -45,7 +46,9 @@ class Manage():
         # 在百度人脸库里增加User照片
         client.addUser(image, imageType, 'group1', self.userId, options)
         add = client.addUser(image, imageType, 'group1', self.userId, options)
-        print add['error_msg']
+        if add['error_msg'] == 'SUCCESS':
+            output = { "code": 0, "data" : "success"}
+            print json.dumps(output)
 
 
     def Query(self):

@@ -1,10 +1,9 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 
-from os import path
 from flask import Flask,request,render_template, redirect,url_for
 import pymysql
-from manage import Manage
+from lib.manage import Manage
 
 connection = pymysql.connect("localhost", "root", "csss331331", "ecommerce", charset='utf8' )
 cursor = connection.cursor(pymysql.cursors.DictCursor)
@@ -15,12 +14,6 @@ API_KEY = 'knoeO8eEGIWvLIHuFczaAWlv'
 SECRET_KEY = '6SKGY0ExOECGM0fGboDsScrOmAolHCo5'
 
 app = Flask(__name__)
-
-@app.route("/",methods=['GET','POST'])
-def info():
-    if request.method=='POST':
-        return redirect(url_for('info'))
-    return render_template('upload.html')
 
 
 @app.route("/upload",methods=['POST'])
@@ -33,6 +26,7 @@ def upload():
         #添加照片到人脸库
         regi = Manage(user_id,na,em,user_id)
         regi.Create()
+
 
         return redirect(url_for('info'))
 
