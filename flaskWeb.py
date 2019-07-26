@@ -6,7 +6,7 @@ from lib.manage import Manage
 
 app = Flask(__name__)
 
-@app.route("/upload",methods=['POST'])
+@app.route("/upload", methods = ['POST'])
 def upload():
     if request.method == 'POST':
         name = request.form["Name"]
@@ -19,7 +19,7 @@ def upload():
 
         return redirect(url_for('info'))
 
-@app.route("/query",methods=['POST'])
+@app.route("/query", methods = ['POST'])
 def query():
     if request.method == 'POST':
 
