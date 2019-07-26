@@ -5,14 +5,6 @@ from flask import Flask,request,render_template, redirect,url_for
 import pymysql
 from lib.manage import Manage
 
-connection = pymysql.connect("localhost", "root", "csss331331", "ecommerce", charset='utf8' )
-cursor = connection.cursor(pymysql.cursors.DictCursor)
-
-""" 你的 APPID AK SK """
-APP_ID = '16817866'
-API_KEY = 'knoeO8eEGIWvLIHuFczaAWlv'
-SECRET_KEY = '6SKGY0ExOECGM0fGboDsScrOmAolHCo5'
-
 app = Flask(__name__)
 
 

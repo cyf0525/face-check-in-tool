@@ -11,3 +11,16 @@ APP_ID = '16817866'
 API_KEY = 'knoeO8eEGIWvLIHuFczaAWlv'
 SECRET_KEY = '6SKGY0ExOECGM0fGboDsScrOmAolHCo5'
 client = AipFace(APP_ID, API_KEY, SECRET_KEY)
+
+
+filepath = '/Users/yanfeng/Downloads/Upload/3.jpeg'
+
+with open(filepath, "rb") as f:
+    base64_data = base64.b64encode(f.read())
+image = str(base64_data)
+imageType = "BASE64"
+
+options = {}
+options["quality_control"] = "NORMAL"
+options["liveness_control"] = "LOW"
+options["action_type"] = "REPLACE"
