@@ -6,6 +6,10 @@ from lib.manage import Manage
 
 app = Flask(__name__)
 
+@app.route('/test')
+def test():
+    return render_template('upload.html')
+
 @app.route("/upload", methods = ['POST'])
 def upload():
     if request.method == 'POST':
@@ -17,7 +21,11 @@ def upload():
         register = Manage(user_id, name, email, user_id)
         register.Create()
 
-        return redirect(url_for('info'))
+        return {
+            "code": 0,   #表示成功
+            "data" : "success",
+            "msg": " "
+        }
 
 @app.route("/query", methods = ['POST'])
 def query():
