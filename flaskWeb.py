@@ -23,9 +23,12 @@ def upload():
 
         return {
             "code": 0,   #表示成功
-            "data" : "success",
-            "msg": " "
+            "data" : "success"
         }
+
+@app.route("/test2")
+def test2():
+    return render_template('query.html')
 
 @app.route("/query", methods = ['POST'])
 def query():
@@ -34,8 +37,6 @@ def query():
         register = Manage('test', 'test', 'test', 'test')
         register.Query()
 
-        return redirect(url_for('query'))
-    return render_template('query.html')
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
